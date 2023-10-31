@@ -15,9 +15,6 @@ function checkuserstatus()
 ?>
 
 
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 

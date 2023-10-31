@@ -65,7 +65,7 @@ if (isset($_POST['register'])) {
                         <?php
 
                         if (isset($errorMsg)) {
-                            echo "<p>$errorMsg</p>";
+                            echo "<p class='text-danger'>$errorMsg</p>";
                         }
 
                         ?>
