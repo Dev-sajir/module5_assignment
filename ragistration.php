@@ -3,37 +3,36 @@ session_start();
 
 $usersFile = 'users.json';
 
-$users = file_exists( $usersFile ) ? json_decode( file_get_contents( $usersFile ), true ) : [];
+$users = file_exists($usersFile) ? json_decode(file_get_contents($usersFile), true) : [];
 
-function saveUsers( $users, $file )
+function saveUsers($users, $file)
 {
-    file_put_contents( $file, json_encode( $users, JSON_PRETTY_PRINT ) );
+    file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT));
 }
 
-if ( isset( $_POST['register'] ) ) {
+if (isset($_POST['register'])) {
     $username = $_POST['username'];
     $email    = $_POST['email'];
     $password = $_POST['password'];
+    $role = $_POST['role'];
 
-    if ( empty( $username ) || empty( $email ) || empty( $password ) ) {
+    if (empty($username) || empty($email) || empty($password)) {
         $errorMsg = "Please fill  all the fields.";
     } else {
-        if ( isset( $users[$email] ) ) {
+        if (isset($users[$email])) {
             $errorMsg = "Email already exists.";
         } else {
             $users[$email] = [
                 'username' => $username,
                 'password' => $password,
-                'role'     => '',
+                'role' => $role,
             ];
 
-            saveUsers( $users, $usersFile );
+            saveUsers($users, $usersFile);
             $_SESSION['email'] = $email;
-            header( 'Location: login.php' );
+            header('Location: login.php');
         }
-
     }
-
 }
 
 
@@ -46,8 +45,8 @@ if ( isset( $_POST['register'] ) ) {
 <head>
     <title>User Registration and Login</title>
     <?php
-include 'bootstrap.php';
-?>
+    include 'bootstrap.php';
+    ?>
 </head>
 
 <body>
@@ -65,16 +64,22 @@ include 'bootstrap.php';
                     <div class="card-body">
                         <?php
 
-if ( isset( $errorMsg ) ) {
-    echo "<p>$errorMsg</p>";
-}
+                        if (isset($errorMsg)) {
+                            echo "<p>$errorMsg</p>";
+                        }
 
-?>
+                        ?>
                         <form class="form" method="POST">
                             <input class="form-control" type="text" name="username" placeholder="Username"><br>
                             <input class="form-control" type="email" name="email" placeholder="Email"><br>
                             <input class="form-control" type="password" name="password" placeholder="Password"><br>
                             <input type="hidden" name="role" value="">
+                            <select class="form-select mb-4" aria-label="Default select example" name="role" required>
+                                <option disabled selected>Select your role</option>
+                                <option value="Admin">Admin</option>
+                                <option value="Manager">Manager</option>
+                                <option value="Visitor">Visitor</option>
+                            </select>
                             <input class="btn btn-primary" type="submit" name="register" value="Register">
                         </form>
                     </div>
@@ -87,6 +92,3 @@ if ( isset( $errorMsg ) ) {
 </body>
 
 </html>
-
-
-
