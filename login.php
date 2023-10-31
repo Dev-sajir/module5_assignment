@@ -20,10 +20,24 @@ if (isset($_POST['login'])) {
     } elseif (!isset($users[$email]) || $users[$email]['password'] !== $password) {
         $errorMsg = "Invalid email or password.";
     } else {
+        // Set the user's email and role in the session
         $_SESSION['email'] = $email;
-        header('Location: admin.php');
+        $_SESSION['role'] = $users[$email]['role'];
+
+        // Determine the redirection URL based on the user's role
+        $role = $_SESSION['role'];
+        $redirectURL = 'index.php'; // Default URL
+        if ($role === 'admin') {
+            $redirectURL = 'admin.php';
+        } elseif ($role === 'manager') {
+            $redirectURL = 'manager.php';
+        }
+
+        // Redirect the user to the appropriate page
+        header("Location: $redirectURL");
     }
 }
+
 ?>
 
 <!DOCTYPE html>

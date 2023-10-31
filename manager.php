@@ -44,13 +44,6 @@ function checkuserstatus()
                 <span class="ml-2">Users</span>
             </a>
 
-            <button class="list-group-item list-group-item-action border-0 d-flex justify-content-between align-items-center" data-toggle="collapse" data-target="#sale-collapse">
-                <div>
-                    <span class="bi bi-cart-dash"></span>
-                    <span class="ml-2">Roles</span>
-                </div>
-                <span class="bi bi-chevron-down small"></span>
-            </button>
 
             <button class="list-group-item list-group-item-action border-0 d-flex justify-content-between align-items-center" data-toggle="collapse" data-target="#sale-collapse">
                 <div>
@@ -63,11 +56,11 @@ function checkuserstatus()
     </div>
 
     <div class="col-md-9 col-lg-10 ml-md-auto px-0 ms-md-auto p-5">
-    <h2 class="text-center">Admin</h2>
+        <h2 class="text-center">Manager</h2>
         <!-- main content -->
         <main class="p-4 mt-4 min-vh-100">
-            <div class="jumbotron jumbotron-fluid rounded bg-white border-0 shadow-sm border-left px-4">
-                <div class="container">
+            <div class="jumbotron jumbotron-fluid rounded bg-white border-0 shadow-sm border-left px-4 py-4">
+                <div class="container ">
                     <table class="table table-dark table-striped table-hover">
                         <thead>
                             <tr>
@@ -93,18 +86,6 @@ function checkuserstatus()
                             ?>
                         </tbody>
                     </table>
-                    <div class="mt-3 pb-4">
-                        <h3 class="mt-4 mb-4">Create, Update, or Delete User Roles</h3>
-                        <form action="manage_roles.php" method="post">
-                            <label for="email">User Email:</label>
-                            <input type="email" id="email" name="email" required>
-                            <label for="role">Role:</label>
-                            <input type="text" id="role" name="role" required>
-                            <button type="submit" name="create">Create Role</button>
-                            <button type="submit" name="update">Update Role</button>
-                            <button type="submit" name="delete">Delete Role</button>
-                        </form>
-                    </div>
                 </div>
             </div>
         </main>

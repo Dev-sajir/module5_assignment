@@ -76,9 +76,9 @@ if (isset($_POST['register'])) {
                             <input type="hidden" name="role" value="">
                             <select class="form-select mb-4" aria-label="Default select example" name="role" required>
                                 <option disabled selected>Select your role</option>
-                                <option value="Admin">Admin</option>
-                                <option value="Manager">Manager</option>
-                                <option value="Visitor">Visitor</option>
+                                <option value="admin">Admin</option>
+                                <option value="manager">Manager</option>
+                                <option value="visitor">Visitor</option>
                             </select>
                             <input class="btn btn-primary" type="submit" name="register" value="Register">
                         </form>
